@@ -18,7 +18,7 @@ URL? Short!
 
 ### Deployment
 
-* View the client live on [Netlify](https://url-short-url.herokuapp.com/) 
+* View the client live on [Heroku](https://url-short-url.herokuapp.com/) 
 
 ## Changelog
 
