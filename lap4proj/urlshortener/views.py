@@ -3,6 +3,9 @@ from .models import Url
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.template import RequestContext
+import string
+import random
+
 
 # Create your views here.
 
@@ -12,22 +15,42 @@ def index(request):
 
 
 def redirect_user(request, short_url):
-  shorturl = Url.objects.get(shorturl=short_url)
-  print(shorturl)
-  return redirect(shorturl.fullurl)
+  try:
+    shorturl = Url.objects.get(shorturl=short_url)
+    print(shorturl)
+    return redirect(shorturl.fullurl)
+  except:
+    return HttpResponseRedirect(reverse("index"))
+  
 
 
+
+def shorturl_gen():
+  shorturl = ''.join(random.SystemRandom().choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for _ in range(5))
+  shorturlexists = Url.objects.filter(shorturl=shorturl)
+  if len(shorturlexists) == 0:
+    return shorturl
+  else:
+    return shorturl_gen()
+
+def results(request, shorturl):
+  return render(request, 'urlshortener/results.html', {"shorturl":shorturl})
 
 def shortenurl(request):
   if request.method =="POST":
     shorturl = request.POST["shorturl"]
+    if len(shorturl) == 0:
+      shorturl = shorturl_gen()
     fullurl = request.POST["fullurl"]
     newurl = Url(shorturl = shorturl, fullurl = fullurl)
-    newurl.save()
-    return HttpResponseRedirect(reverse("index"))
+    try:
+      newurl.save()
+      return HttpResponseRedirect(reverse("results", args = [shorturl]))
+    except:
+      return HttpResponseRedirect(reverse("invalidshorturl", args = [shorturl]))
 
 
-def handle500(request):
-  response = render('500.html', {}, context_instance=RequestContext(request))
-  response.status_code = 500
-  return response
+def invalidshorturl(request, shorturl):
+  return render(request, 'urlshortener/500.html', {"shorturl":shorturl})
+
+
