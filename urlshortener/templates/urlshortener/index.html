@@ -1,14 +1,16 @@
 {% extends "urlshortener/layout.html" %}
 
   {% block content %}
-<h1>Hello world</h1>
+<h1>URL? Short!</h1>
+<h2>Enter your full URL and a path for your short URL (optional)!!!</h2>
   <form action="{% url 'shortenurl'%}" method="POST">
       {% csrf_token %}
-      <label for="fullurl">Full URL: </label>
+      <label for="fullurl">Your URL: </label>
       <input name="fullurl" id="fullurl" placeholder="https://www.google.com" required>
-      <label for="shorturl">Short URL: </label>
+      <label for="shorturl">Short Path: </label>
       <input name="shorturl" id="shorturl" placeholder="gg">
-      <input type="submit" value="Save URL">
+      <input type="submit" id="button" value="Shorten URL">
   </form>
+  <h3>If no short path entered, we'll randomly generate one for you!</h3>
   {% endblock %}
   

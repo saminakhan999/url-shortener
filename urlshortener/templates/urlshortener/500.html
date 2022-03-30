@@ -2,8 +2,8 @@
 
   {% block content %}
   <h1>Error 500</h1>
-  <h2>{{shorturl}} is already taken</h2>
-  <a href="/urlshortener">Go back</a>
+  <h2>The short path {{shorturl}} is already taken, sorry about that!</h2>
+  <a id="goback" class="button button--winona button--border-thin button--text-thick button--inverted" href="/urlshortener">Go back</a>
 
   {% endblock %}
   
