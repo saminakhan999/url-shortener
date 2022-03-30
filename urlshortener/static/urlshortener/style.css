@@ -64,8 +64,12 @@ input[type="submit"] {
 }
 
 
-h3, h2 {
+h3 {
   font-style: italic;
+  color: whitesmoke;
+}
+
+h2 {
   color: whitesmoke;
 }
 
