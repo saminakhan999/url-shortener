@@ -1,0 +1,9 @@
+{% extends "urlshortener/layout.html" %}
+
+  {% block content %}
+  <h1>Your shortened url is</h1>
+    <a target="_blank" href="/urlshortener/{{shorturl}}">https://url-short-url.herokuapp.com/urlshortener/{{shorturl}}</a>
+    <br>
+     <a id="goback" class="button button--winona button--border-thin button--text-thick button--inverted" href="/urlshortener">Go back</a>
+  {% endblock %}
+  
