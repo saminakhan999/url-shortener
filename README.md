@@ -34,5 +34,4 @@ URL? Short! [Try it out](https://url-short-url.herokuapp.com)
 ### Challenges
 
 * Having to run 3 separate commands on the Heroku Procfile to fix a deployment issue
-* Not enough time for tests :(
 * The shortened URL is actually longer than the full URL... 
