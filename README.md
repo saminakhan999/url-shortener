@@ -1,6 +1,6 @@
 # URL Shortener
 
-URL? Short!
+URL? Short! [Try it out](https://url-short-url.herokuapp.com)
 
 ## Installation & Usage
 
@@ -18,7 +18,7 @@ URL? Short!
 
 ### Deployment
 
-* View the client live on [Heroku](https://url-short-url.herokuapp.com/urlshortener/a0Drg) 
+* View the client live on [Heroku](https://url-short-url.herokuapp.com) 
 
 ## Changelog
 
